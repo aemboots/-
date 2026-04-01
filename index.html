@@ -1,8 +1,7 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <head>
-    <link rel="icon" type="image/x-icon" href="img/logo.jpeg"></head>
+    <link rel="icon" type="image/x-icon" href="img/logo.jpeg">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AEM BOOTS | Elite Football Store</title>
@@ -84,7 +83,6 @@
         
         .card { background: white; border-radius: 15px; overflow: hidden; border: 1px solid #f0f0f0; transition: 0.3s; display: flex; flex-direction: column; position: relative; }
         
-        /* تعديل سلايدر الصور (5 صور) */
         .card-img-wrapper { 
             width: 100%; 
             height: 180px; 
@@ -104,7 +102,6 @@
             scroll-snap-align: start;
         }
 
-        /* نقاط التمرير */
         .slider-dots {
             position: absolute;
             bottom: 8px;
@@ -185,8 +182,7 @@
 
     <section class="products-section" id="shop">
         <div class="grid">
-            <!-- بطاقة منتج بـ 5 صور -->
-             <div class="card" data-tag="nike">
+            <div class="card" data-tag="nike">
                 <span class="tag">nike</span>
                 <div class="card-img-wrapper">
                     <img src="img/19.jpeg" class="card-img">
@@ -202,6 +198,7 @@
                     <button class="add-btn" onclick="openOrder('Nike air zoom vapor 15 FG', '599 DH', 'shoe')">Commander</button>
                 </div>
             </div>
+
             <div class="card" data-tag="Adidas">
                 <span class="tag">adidas</span>
                 <div class="card-img-wrapper">
@@ -292,24 +289,25 @@
                 <div class="card-img-wrapper">
                     <img src="img/moroco1.jpeg" class="card-img">
                     <img src="img/maroco2.jpeg" class="card-img">
-
                     <div class="slider-dots"><div class="dot"></div><div class="dot"></div></div>
                 </div>
                 <div class="card-body">
                     <h3>Maroc Domicile 2026</h3>
                     <div class="price">199 DH </div>
-                    <button class="add-btn" onclick="openOrder('Maroc Domicile 2026', '200 DH', 'shirt')">Commander</button>
-                </div> 
-                <div class="card" data-tag="Maillot">
+                    <button class="add-btn" onclick="openOrder('Maroc Domicile 2026', '199 DH', 'shirt')">Commander</button>
+                </div>
+            </div>
+
+            <div class="card" data-tag="Maillot">
                 <span class="tag">Maillot</span>
                 <div class="card-img-wrapper">
                     <img src="img/arg.jpeg" class="card-img">
-                    <div class="slider-dots"><div class="dot"></div>
+                    <div class="slider-dots"><div class="dot"></div></div>
                 </div>
                 <div class="card-body">
                     <h3>argentine Domicile 2026</h3>
                     <div class="price">199 DH </div>
-                    <button class="add-btn" onclick="openOrder('argentine Domicile 2026', '200 DH', 'shirt')">Commander</button>
+                    <button class="add-btn" onclick="openOrder('argentine Domicile 2026', '199 DH', 'shirt')">Commander</button>
                 </div>
             </div>
 
@@ -320,27 +318,26 @@
                     <img src="img/pp.jpeg" class="card-img">
                     <img src="img/PPP.jpeg" class="card-img">
                     <img src="img/PPPP.jpeg" class="card-img">
-                  
                     <div class="slider-dots"><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div></div>
                 </div>
                 <div class="card-body">
                     <h3>Protège-tibias AEM</h3>
                     <div class="price">69 DH</div>
-                    <button class="add-btn" onclick="openOrder('Protège-tibias AEM', '70 DH', 'acc')">Commander</button>
+                    <button class="add-btn" onclick="openOrder('Protège-tibias AEM', '69 DH', 'acc')">Commander</button>
                 </div>
             </div>
-                       <div class="card" data-tag="Accessoire">
+
+            <div class="card" data-tag="Accessoire">
                 <span class="tag">Accessoire</span>
                 <div class="card-img-wrapper">
                     <img src="img/11.jpeg" class="card-img">
                     <img src="img/12.jpeg" class="card-img">
-                  
-                    <div class="slider-dots"><div class="dot"></div>
+                    <div class="slider-dots"><div class="dot"></div><div class="dot"></div></div>
                 </div>
                 <div class="card-body">
-                    <h3>Chaussettes en silicone /h3>
+                    <h3>Chaussettes en silicone</h3>
                     <div class="price">99 DH</div>
-                    <button class="add-btn" onclick="openOrder('Chaussettes en silicone ', '100 DH', 'acc')">Commander</button>
+                    <button class="add-btn" onclick="openOrder('Chaussettes en silicone', '99 DH', 'acc')">Commander</button>
                 </div>
             </div>
         </div>
@@ -434,7 +431,7 @@
 
         function closeModal() { document.getElementById('orderModal').style.display = 'none'; }
 
-      function sendOrder(e) {
+        function sendOrder(e) {
             e.preventDefault();
             if(!currentSize) { alert("Veuillez choisir une taille !"); return; }
             
@@ -446,7 +443,7 @@
             const priceText = document.getElementById('mPrice').innerText;
             
             // حساب المجموع الإجمالي
-            const priceValue = parseInt(priceText.replace(/[^0-9]/g, '')); // استخراج الرقم فقط
+            const priceValue = parseInt(priceText.replace(/[^0-9]/g, '')); 
             const shipping = 35;
             const total = priceValue + shipping;
 
