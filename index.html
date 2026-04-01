@@ -323,7 +323,10 @@
         <div class="modal-content">
             <button class="close-btn" onclick="closeModal()">&times;</button>
             <h2 id="mTitle" style="font-weight:900; font-size: 1.2rem;">Commander</h2>
-            <p id="mPrice" style="color:var(--primary-blue); font-weight:800; margin-bottom:15px;"></p>
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px;">
+                <p id="mPrice" style="color:var(--primary-blue); font-weight:800;"></p>
+                <p style="background: #fff3cd; color: #856404; padding: 2px 8px; border-radius: 5px; font-size: 0.75rem; font-weight: 700;">Livraison: 35 DH</p>
+            </div>
             
             <form onsubmit="sendOrder(event)">
                 <div class="form-group">
@@ -414,9 +417,10 @@
             const address = document.getElementById('cAddress').value;
             const product = document.getElementById('mTitle').innerText;
             const price = document.getElementById('mPrice').innerText;
+            const shipping = "35 DH";
 
             const myNumber = "212684384248"; 
-            const message = `Bonjour AEM BOOTS, je souhaite commander :%0A- Produit : ${product}%0A- Taille : ${currentSize}%0A- Prix : ${price}%0A---%0A- Nom : ${name}%0A- Tel : ${phone}%0A- Ville : ${city}%0A- Adresse : ${address}`;
+            const message = `Bonjour AEM BOOTS, je souhaite commander :%0A- Produit : ${product}%0A- Taille : ${currentSize}%0A- Prix : ${price}%0A- Livraison : ${shipping}%0A---%0A- Nom : ${name}%0A- Tel : ${phone}%0A- Ville : ${city}%0A- Adresse : ${address}`;
             
             window.open(`https://wa.me/${myNumber}?text=${message}`, '_blank');
             closeModal();
