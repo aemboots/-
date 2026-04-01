@@ -409,7 +409,7 @@
 
         function closeModal() { document.getElementById('orderModal').style.display = 'none'; }
 
-        function sendOrder(e) {
+      function sendOrder(e) {
             e.preventDefault();
             if(!currentSize) { alert("Veuillez choisir une taille !"); return; }
             
@@ -418,16 +418,19 @@
             const city = document.getElementById('cCity').value;
             const address = document.getElementById('cAddress').value;
             const product = document.getElementById('mTitle').innerText;
-            const price = document.getElementById('mPrice').innerText;
-            const shipping = "35 DH";
+            const priceText = document.getElementById('mPrice').innerText;
+            
+            // حساب المجموع الإجمالي
+            const priceValue = parseInt(priceText.replace(/[^0-9]/g, '')); // استخراج الرقم فقط
+            const shipping = 35;
+            const total = priceValue + shipping;
 
             const myNumber = "212684384248"; 
-            const message = `Bonjour AEM BOOTS, je souhaite commander :%0A- Produit : ${product}%0A- Taille : ${currentSize}%0A- Prix : ${price}%0A- Livraison : ${shipping}%0A---%0A- Nom : ${name}%0A- Tel : ${phone}%0A- Ville : ${city}%0A- Adresse : ${address}`;
+            const message = `Bonjour AEM BOOTS, je souhaite commander :%0A- Produit : ${product}%0A- Taille : ${currentSize}%0A- Prix : ${priceText}%0A- Livraison : ${shipping} DH%0A- *TOTAL : ${total} DH*%0A---%0A- Nom : ${name}%0A- Tel : ${phone}%0A- Ville : ${city}%0A- Adresse : ${address}`;
             
             window.open(`https://wa.me/${myNumber}?text=${message}`, '_blank');
             closeModal();
         }
-
         window.onclick = function(e) { if (e.target.className === 'modal') closeModal(); }
     </script>
 </body>
