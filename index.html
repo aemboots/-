@@ -48,7 +48,6 @@
         .fa-instagram { color: var(--insta-pink); }
         .fa-whatsapp { color: var(--whatsapp-green); }
 
-        /* Navigation Menu */
         .main-nav {
             display: flex;
             justify-content: center;
@@ -103,7 +102,6 @@
         .card-body h3 { font-size: 0.85rem; font-weight: 700; margin-bottom: 5px; }
         .price { font-weight: 900; font-size: 1rem; color: var(--primary-blue); margin-bottom: 10px; }
         
-        /* Buttons Group */
         .btn-container { display: flex; gap: 5px; width: 100%; }
         .add-btn { background: #000; color: white; border: none; flex: 2; padding: 10px; border-radius: 10px; cursor: pointer; font-weight: 700; font-size: 0.75rem; }
         .cart-btn { background: var(--accent-yellow); color: #000; border: none; flex: 1; padding: 10px; border-radius: 10px; cursor: pointer; font-weight: 700; font-size: 1rem; }
@@ -118,19 +116,22 @@
         .q-btn { width: 22px; height: 22px; border-radius: 5px; border: 1px solid #ddd; background: white; cursor: pointer; }
 
         /* --- Modal --- */
-        .modal { display: none; position: fixed; z-index: 2000; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.6); backdrop-filter: blur(4px); justify-content: center; align-items: flex-end; }
+        .modal { display: none; position: fixed; z-index: 4000; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.6); backdrop-filter: blur(4px); justify-content: center; align-items: flex-end; }
         .modal-content { background: white; padding: 25px; border-radius: 25px 25px 0 0; width: 100%; max-width: 500px; animation: slideUp 0.3s ease-out; position: relative; max-height: 90vh; overflow-y: auto; }
         @keyframes slideUp { from { transform: translateY(100%); } to { transform: translateY(0); } }
         
         .close-btn { position: absolute; top: 15px; right: 20px; font-size: 1.8rem; cursor: pointer; border: none; background: none; }
         .form-group { margin-bottom: 15px; }
         .form-group label { display: block; margin-bottom: 5px; font-weight: 700; font-size: 0.85rem; }
-        .form-group input { width: 100%; padding: 12px; border: 2px solid #eee; border-radius: 12px; outline: none; }
+        .form-group input { width: 100%; padding: 12px; border: 2px solid #eee; border-radius: 12px; outline: none; font-size: 1rem; }
         
         .size-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 8px; margin-top: 10px; }
         .size-box { border: 2px solid #eee; padding: 10px 5px; text-align: center; border-radius: 10px; cursor: pointer; font-weight: 700; font-size: 0.8rem; }
         .size-box.selected { border-color: var(--primary-blue); background: #e1efff; color: var(--primary-blue); }
-        .submit-btn { width: 100%; padding: 15px; background: #25D366; color: white; border: none; border-radius: 12px; font-weight: 800; cursor: pointer; margin-top: 10px; font-size: 1rem; display: flex; align-items: center; justify-content: center; gap: 10px; }
+        
+        .modal-buttons { display: flex; flex-direction: column; gap: 10px; margin-top: 15px; }
+        .submit-btn { width: 100%; padding: 15px; background: var(--whatsapp-green); color: white; border: none; border-radius: 12px; font-weight: 800; cursor: pointer; font-size: 1rem; display: flex; align-items: center; justify-content: center; gap: 10px; }
+        .modal-cart-btn { width: 100%; padding: 15px; background: var(--accent-yellow); color: #000; border: none; border-radius: 12px; font-weight: 800; cursor: pointer; font-size: 1rem; }
 
         @media (min-width: 769px) {
             .grid { grid-template-columns: repeat(4, 1fr); gap: 25px; }
@@ -143,7 +144,6 @@
             .hero { flex-direction: column-reverse; text-align: center; padding: 30px 5%; }
             .hero-content h1 { font-size: 1.8rem; margin-top: 15px; }
             .nav-wrapper { justify-content: flex-start; }
-            .main-nav { gap: 15px; font-size: 0.8rem; }
         }
 
         footer { padding: 40px 5%; background: var(--white); text-align: center; border-top: 1px solid #f0f0f0; }
@@ -159,8 +159,7 @@
                 <img src="img/logo.jpeg" class="logo-img">
             </div>
             <div class="header-actions">
-                <!-- أيقونات انستغرام و واتساب -->
-                <a href="https://www.instagram.com/aem_boots/" target="_blank" class="social-icon"><i class="fab fa-instagram"></i></a>
+                <a href="https://www.instagram.com/aemboots/" target="_blank" class="social-icon"><i class="fab fa-instagram"></i></a>
                 <a href="https://wa.me/212684384248" target="_blank" class="social-icon"><i class="fab fa-whatsapp"></i></a>
                 
                 <div class="cart-trigger" onclick="toggleCartSidebar()">
@@ -170,10 +169,9 @@
             </div>
         </div>
 
-        <!-- القائمة الرئيسية -->
         <nav class="main-nav">
             <a href="#home">Accueil</a>
-            <a href="#shop" onclick="filterItems('all', document.querySelector('.filter-btn'))">Le magasin</a>
+            <a href="#shop">magasin</a>
             <a href="#contact">Contactez-nous</a>
         </nav>
 
@@ -211,8 +209,8 @@
                     <h3>Nike air zoom vapor 15 FG</h3>
                     <div class="price">599 DH</div>
                     <div class="btn-container">
-                        <button class="add-btn" onclick="openOrder('Nike air zoom vapor 15 FG', '599 DH', 'shoe', false)">Commander</button>
-                        <button class="cart-btn" onclick="openOrder('Nike air zoom vapor 15 FG', '599 DH', 'shoe', true)"><i class="fas fa-cart-plus"></i></button>
+                        <button class="add-btn" onclick="openOrder('Nike air zoom vapor 15 FG', '599 DH', 'shoe')">Commander</button>
+                        <button class="cart-btn" onclick="openOrder('Nike air zoom vapor 15 FG', '599 DH', 'shoe')"><i class="fas fa-cart-plus"></i></button>
                     </div>
                 </div>
             </div>
@@ -227,8 +225,8 @@
                     <h3>Adidas f50 laceless FG</h3>
                     <div class="price">599 DH</div>
                     <div class="btn-container">
-                        <button class="add-btn" onclick="openOrder('Adidas f50 laceless FG', '599 DH', 'shoe', false)">Commander</button>
-                        <button class="cart-btn" onclick="openOrder('Adidas f50 laceless FG', '599 DH', 'shoe', true)"><i class="fas fa-cart-plus"></i></button>
+                        <button class="add-btn" onclick="openOrder('Adidas f50 laceless FG', '599 DH', 'shoe')">Commander</button>
+                        <button class="cart-btn" onclick="openOrder('Adidas f50 laceless FG', '599 DH', 'shoe')"><i class="fas fa-cart-plus"></i></button>
                     </div>
                 </div>
             </div>
@@ -243,8 +241,8 @@
                     <h3>ADIDAS F50 LACELESS FG</h3>
                     <div class="price">599 DH</div>
                     <div class="btn-container">
-                        <button class="add-btn" onclick="openOrder('ADIDAS F50 LACELESS FG', '599 DH', 'shoe', false)">Commander</button>
-                        <button class="cart-btn" onclick="openOrder('ADIDAS F50 LACELESS FG', '599 DH', 'shoe', true)"><i class="fas fa-cart-plus"></i></button>
+                        <button class="add-btn" onclick="openOrder('ADIDAS F50 LACELESS FG', '599 DH', 'shoe')">Commander</button>
+                        <button class="cart-btn" onclick="openOrder('ADIDAS F50 LACELESS FG', '599 DH', 'shoe')"><i class="fas fa-cart-plus"></i></button>
                     </div>
                 </div>
             </div>
@@ -259,8 +257,8 @@
                     <h3>Adidas f50 laceless FG</h3>
                     <div class="price">599 DH</div>
                     <div class="btn-container">
-                        <button class="add-btn" onclick="openOrder('Adidas f50 laceless FG', '599 DH', 'shoe', false)">Commander</button>
-                        <button class="cart-btn" onclick="openOrder('Adidas f50 laceless FG', '599 DH', 'shoe', true)"><i class="fas fa-cart-plus"></i></button>
+                        <button class="add-btn" onclick="openOrder('Adidas f50 laceless FG', '599 DH', 'shoe')">Commander</button>
+                        <button class="cart-btn" onclick="openOrder('Adidas f50 laceless FG', '599 DH', 'shoe')"><i class="fas fa-cart-plus"></i></button>
                     </div>
                 </div>
             </div>
@@ -275,8 +273,8 @@
                     <h3>Nike air zoom vapor 16 FG</h3>
                     <div class="price">599 DH</div>
                     <div class="btn-container">
-                        <button class="add-btn" onclick="openOrder('Nike air zoom vapor 16 FG', '599 DH', 'shoe', false)">Commander</button>
-                        <button class="cart-btn" onclick="openOrder('Nike air zoom vapor 16 FG', '599 DH', 'shoe', true)"><i class="fas fa-cart-plus"></i></button>
+                        <button class="add-btn" onclick="openOrder('Nike air zoom vapor 16 FG', '599 DH', 'shoe')">Commander</button>
+                        <button class="cart-btn" onclick="openOrder('Nike air zoom vapor 16 FG', '599 DH', 'shoe')"><i class="fas fa-cart-plus"></i></button>
                     </div>
                 </div>
             </div>
@@ -291,8 +289,8 @@
                     <h3>Nike air zoom vapor 16 FG</h3>
                     <div class="price">599 DH</div>
                     <div class="btn-container">
-                        <button class="add-btn" onclick="openOrder('Nike air zoom vapor 16 FG', '599 DH', 'shoe', false)">Commander</button>
-                        <button class="cart-btn" onclick="openOrder('Nike air zoom vapor 16 FG', '599 DH', 'shoe', true)"><i class="fas fa-cart-plus"></i></button>
+                        <button class="add-btn" onclick="openOrder('Nike air zoom vapor 16 FG', '599 DH', 'shoe')">Commander</button>
+                        <button class="cart-btn" onclick="openOrder('Nike air zoom vapor 16 FG', '599 DH', 'shoe')"><i class="fas fa-cart-plus"></i></button>
                     </div>
                 </div>
             </div>
@@ -307,8 +305,8 @@
                     <h3>Maroc Domicile 2026</h3>
                     <div class="price">199 DH </div>
                     <div class="btn-container">
-                        <button class="add-btn" onclick="openOrder('Maroc Domicile 2026', '199 DH', 'shirt', false)">Commander</button>
-                        <button class="cart-btn" onclick="openOrder('Maroc Domicile 2026', '199 DH', 'shirt', true)"><i class="fas fa-cart-plus"></i></button>
+                        <button class="add-btn" onclick="openOrder('Maroc Domicile 2026', '199 DH', 'shirt')">Commander</button>
+                        <button class="cart-btn" onclick="openOrder('Maroc Domicile 2026', '199 DH', 'shirt')"><i class="fas fa-cart-plus"></i></button>
                     </div>
                 </div>
             </div>
@@ -323,8 +321,8 @@
                     <h3>argentine Domicile 2026</h3>
                     <div class="price">199 DH </div>
                     <div class="btn-container">
-                        <button class="add-btn" onclick="openOrder('argentine Domicile 2026', '199 DH', 'shirt', false)">Commander</button>
-                        <button class="cart-btn" onclick="openOrder('argentine Domicile 2026', '199 DH', 'shirt', true)"><i class="fas fa-cart-plus"></i></button>
+                        <button class="add-btn" onclick="openOrder('argentine Domicile 2026', '199 DH', 'shirt')">Commander</button>
+                        <button class="cart-btn" onclick="openOrder('argentine Domicile 2026', '199 DH', 'shirt')"><i class="fas fa-cart-plus"></i></button>
                     </div>
                 </div>
             </div>
@@ -339,8 +337,8 @@
                     <h3>Protège-tibias AEM</h3>
                     <div class="price">69 DH</div>
                     <div class="btn-container">
-                        <button class="add-btn" onclick="openOrder('Protège-tibias AEM', '69 DH', 'acc', false)">Commander</button>
-                        <button class="cart-btn" onclick="openOrder('Protège-tibias AEM', '69 DH', 'acc', true)"><i class="fas fa-cart-plus"></i></button>
+                        <button class="add-btn" onclick="openOrder('Protège-tibias AEM', '69 DH', 'acc')">Commander</button>
+                        <button class="cart-btn" onclick="openOrder('Protège-tibias AEM', '69 DH', 'acc')"><i class="fas fa-cart-plus"></i></button>
                     </div>
                 </div>
             </div>
@@ -355,15 +353,15 @@
                     <h3>Chaussettes en silicone</h3>
                     <div class="price">99 DH</div>
                     <div class="btn-container">
-                        <button class="add-btn" onclick="openOrder('Chaussettes en silicone', '99 DH', 'acc', false)">Commander</button>
-                        <button class="cart-btn" onclick="openOrder('Chaussettes en silicone', '99 DH', 'acc', true)"><i class="fas fa-cart-plus"></i></button>
+                        <button class="add-btn" onclick="openOrder('Chaussettes en silicone', '99 DH', 'acc')">Commander</button>
+                        <button class="cart-btn" onclick="openOrder('Chaussettes en silicone', '99 DH', 'acc')"><i class="fas fa-cart-plus"></i></button>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Cart Sidebar UI -->
+    <!-- Cart Sidebar -->
     <div class="cart-sidebar" id="cartSidebar">
         <div class="cart-header">
             <h3>Votre Panier</h3>
@@ -375,45 +373,46 @@
                 <span>Total (avec livraison):</span>
                 <span id="cartTotalFinal">0 DH</span>
             </div>
-            <button class="submit-btn" onclick="checkoutFromCart()"><i class="fab fa-whatsapp"></i> CONFIRMER LA COMMANDE</button>
+            <!-- تم تغيير الوظيفة هنا لتفتح الاستمارة -->
+            <button class="submit-btn" onclick="openCheckoutForm()"><i class="fab fa-whatsapp"></i> CONFIRMER LA COMMANDE</button>
         </div>
     </div>
 
+    <!-- Modal الاستمارة -->
     <div class="modal" id="orderModal">
         <div class="modal-content">
             <button class="close-btn" onclick="closeModal()">&times;</button>
-            <h2 id="mTitle">Commander</h2>
-            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px;">
+            <h2 id="mTitle">Informations de livraison</h2>
+            <div id="mProductHeader" style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px;">
                 <p id="mPrice" style="color:var(--primary-blue); font-weight:800;"></p>
                 <p style="background: #fff3cd; color: #856404; padding: 2px 8px; border-radius: 5px; font-size: 0.75rem; font-weight: 700;">Livraison: 35 DH</p>
             </div>
             
             <form onsubmit="handleFormSubmit(event)">
-                <div id="userInputs">
-                    <div class="form-group"><label>Nom Complet</label><input type="text" id="cName" placeholder="Votre nom" required></div>
-                    <div class="form-group"><label>Téléphone</label><input type="tel" id="cPhone" placeholder="06..." required></div>
-                    <div class="form-group"><label>Ville</label><input type="text" id="cCity" placeholder="Ex: Casablanca" required></div>
-                    <div class="form-group"><label>Adresse complète</label><input type="text" id="cAddress" placeholder="Quartier, Rue..." required></div>
-                </div>
+                <div class="form-group"><label>Nom Complet</label><input type="text" id="cName" placeholder="Votre nom" required></div>
+                <div class="form-group"><label>Téléphone</label><input type="tel" id="cPhone" placeholder="06..." required></div>
+                <div class="form-group"><label>Ville</label><input type="text" id="cCity" placeholder="Ex: Casablanca" required></div>
+                <div class="form-group"><label>Adresse complète</label><input type="text" id="cAddress" placeholder="Quartier, Rue..." required></div>
 
                 <div id="sizeSection" class="form-group">
                     <label>Taille</label>
                     <div class="size-grid" id="sizeGrid"></div>
                 </div>
 
-                <button type="submit" id="submitBtn" class="submit-btn"><i class="fab fa-whatsapp"></i> CONFIRMER</button>
+                <div class="modal-buttons">
+                    <button type="button" id="addToCartBtn" class="modal-cart-btn" onclick="addToCartOnly()">AJOUTER AU PANIER</button>
+                    <button type="submit" class="submit-btn"><i class="fab fa-whatsapp"></i> CONFIRMER SUR WHATSAPP</button>
+                </div>
             </form>
         </div>
     </div>
 
     <footer id="contact">
         <div class="logo-text" style="font-size: 1rem;">AEM <span>BOOTS</span> Morocco</div>
-        
         <div class="footer-socials">
-            <a href="https://www.instagram.com/aem_boots/" target="_blank" class="social-icon"><i class="fab fa-instagram"></i></a>
+            <a href="https://www.instagram.com/aemboots/" target="_blank" class="social-icon"><i class="fab fa-instagram"></i></a>
             <a href="https://wa.me/212684384248" target="_blank" class="social-icon"><i class="fab fa-whatsapp"></i></a>
         </div>
-
         <p style="color: #333; font-size: 0.9rem; font-weight: 600;">Contactez-nous sur WhatsApp ou Instagram pour toute question.</p>
         <p style="color: #a0aec0; font-size: 0.7rem; margin-top: 10px;">© 2026 Tous droits réservés.</p>
     </footer>
@@ -421,8 +420,8 @@
     <script>
         let cart = [];
         let currentSize = null;
-        let isCartMode = false;
         let activeProduct = {};
+        let isCheckoutMode = false; // للتفريق بين طلب منتج واحد أو السلة كاملة
 
         function toggleCartSidebar() {
             document.getElementById('cartSidebar').classList.toggle('open');
@@ -437,12 +436,14 @@
             });
         }
 
-        function openOrder(name, price, type, addToCart) {
-            isCartMode = addToCart;
+        function openOrder(name, price, type) {
+            isCheckoutMode = false;
             activeProduct = { name, price, type };
-            
-            document.getElementById('mTitle').innerText = name;
+            document.getElementById('mTitle').innerText = "Commander " + name;
             document.getElementById('mPrice').innerText = price;
+            document.getElementById('mProductHeader').style.display = 'flex';
+            document.getElementById('addToCartBtn').style.display = 'block';
+            
             const grid = document.getElementById('sizeGrid');
             const section = document.getElementById('sizeSection');
             grid.innerHTML = '';
@@ -458,11 +459,21 @@
                 section.style.display = 'none';
                 currentSize = 'N/A';
             }
-
-            document.getElementById('userInputs').style.display = addToCart ? 'none' : 'block';
-            document.getElementById('submitBtn').innerHTML = addToCart ? "AJOUTER AU PANIER" : "<i class='fab fa-whatsapp'></i> CONFIRMER SUR WHATSAPP";
-
             document.getElementById('orderModal').style.display = 'flex';
+        }
+
+        // دالة تفتح الاستمارة عند الرغبة في تأكيد السلة كاملة
+        function openCheckoutForm() {
+            if(cart.length === 0) return alert("Votre panier est vide!");
+            isCheckoutMode = true;
+            document.getElementById('mTitle').innerText = "Informations de livraison";
+            document.getElementById('mProductHeader').style.display = 'none';
+            document.getElementById('sizeSection').style.display = 'none';
+            document.getElementById('addToCartBtn').style.display = 'none';
+            currentSize = "CART"; // قيمة وهمية لتخطي فحص الحجم
+            
+            document.getElementById('orderModal').style.display = 'flex';
+            toggleCartSidebar(); // إغلاق السلة لترك المجال للمودال
         }
 
         function createSizeBox(val, container) {
@@ -477,21 +488,20 @@
             container.appendChild(div);
         }
 
+        function addToCartOnly() {
+            if(!currentSize) { alert("Veuillez choisir une taille !"); return; }
+            const existing = cart.find(i => i.name === activeProduct.name && i.size === currentSize);
+            if(existing) existing.qty++;
+            else cart.push({ ...activeProduct, size: currentSize, qty: 1 });
+            updateCartCount();
+            closeModal();
+            toggleCartSidebar();
+        }
+
         function handleFormSubmit(e) {
             e.preventDefault();
             if(!currentSize) { alert("Veuillez choisir une taille !"); return; }
-
-            if(isCartMode) {
-                const existing = cart.find(i => i.name === activeProduct.name && i.size === currentSize);
-                if(existing) existing.qty++;
-                else cart.push({ ...activeProduct, size: currentSize, qty: 1 });
-                
-                updateCartCount();
-                closeModal();
-                toggleCartSidebar();
-            } else {
-                sendWhatsApp(false);
-            }
+            sendWhatsApp(isCheckoutMode);
         }
 
         function renderCart() {
@@ -499,7 +509,6 @@
             const totalDisplay = document.getElementById('cartTotalFinal');
             list.innerHTML = '';
             let total = 0;
-
             cart.forEach((item, index) => {
                 const p = parseInt(item.price.replace(/[^0-9]/g, ''));
                 total += (p * item.qty);
@@ -517,7 +526,6 @@
                     </div>
                 `;
             });
-
             totalDisplay.innerText = (total > 0 ? total + 35 : 0) + " DH";
         }
 
@@ -533,39 +541,36 @@
             document.getElementById('cartCount').innerText = count;
         }
 
-        function sendWhatsApp(fromCart) {
+        function sendWhatsApp(isFullCart) {
             const myNumber = "212684384248";
-            let message = "";
+            const name = document.getElementById('cName').value;
+            const phone = document.getElementById('cPhone').value;
+            const city = document.getElementById('cCity').value;
+            const address = document.getElementById('cAddress').value;
+            
+            let message = `*NOUVELLE COMMANDE*%0A%0A`;
+            message += `*Nom:* ${name}%0A*Tel:* ${phone}%0A*Ville:* ${city}%0A*Adresse:* ${address}%0A%0A`;
+            message += `*Détails de la commande:*%0A`;
 
-            if(fromCart) {
-                message = "Bonjour AEM BOOTS, je souhaite commander:%0A";
+            if(isFullCart) {
                 let subtotal = 0;
                 cart.forEach(item => {
                     message += `- ${item.name} (Taille: ${item.size}) x${item.qty}%0A`;
                     subtotal += parseInt(item.price.replace(/[^0-9]/g, '')) * item.qty;
                 });
-                message += `%0A*Total produits:* ${subtotal} DH%0A*Livraison:* 35 DH%0A*TOTAL FINAL:* ${subtotal + 35} DH`;
+                message += `%0A*Livraison:* 35 DH%0A*TOTAL:* ${subtotal + 35} DH`;
             } else {
-                const name = document.getElementById('cName').value;
-                const phone = document.getElementById('cPhone').value;
-                const city = document.getElementById('cCity').value;
-                const address = document.getElementById('cAddress').value;
                 const total = parseInt(activeProduct.price.replace(/[^0-9]/g, '')) + 35;
-                
-                message = `Bonjour AEM BOOTS, je souhaite commander :%0A- Produit : ${activeProduct.name}%0A- Taille : ${currentSize}%0A- Prix : ${activeProduct.price}%0A- Livraison : 35 DH%0A- *TOTAL : ${total} DH*%0A---%0A- Nom : ${name}%0A- Tel : ${phone}%0A- Ville : ${city}%0A- Adresse : ${address}`;
+                message += `- ${activeProduct.name} (Taille: ${currentSize})%0A%0A*TOTAL:* ${total} DH (Livraison incluse)`;
             }
 
             window.open(`https://wa.me/${myNumber}?text=${message}`, '_blank');
-        }
-
-        function checkoutFromCart() {
-            if(cart.length === 0) return alert("Votre panier est vide!");
-            sendWhatsApp(true);
+            if(isFullCart) { cart = []; updateCartCount(); }
+            closeModal();
         }
 
         function closeModal() { document.getElementById('orderModal').style.display = 'none'; }
 
-        // Slider logic
         document.querySelectorAll('.card-img-wrapper').forEach(wrp => {
             wrp.addEventListener('scroll', () => {
                 const idx = Math.round(wrp.scrollLeft / wrp.offsetWidth);
